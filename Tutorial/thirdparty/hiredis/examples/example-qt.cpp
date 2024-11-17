@@ -17,7 +17,7 @@ void getCallback(redisAsyncContext *, void * r, void * privdata) {
     ex->finish();
 }
 
-void ExampleQt::run() {
+void ExampleQt::WorkThreadRun() {
 
     m_ctx = redisAsyncConnect("localhost", 6379);
 
@@ -40,7 +40,7 @@ int main (int argc, char **argv) {
     ExampleQt example(argv[argc-1]);
 
     QObject::connect(&example, SIGNAL(finished()), &app, SLOT(quit()));
-    QTimer::singleShot(0, &example, SLOT(run()));
+    QTimer::singleShot(0, &example, SLOT(WorkThreadRun()));
 
     return app.exec();
 }

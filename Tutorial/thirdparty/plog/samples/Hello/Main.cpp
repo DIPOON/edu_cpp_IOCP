@@ -6,7 +6,7 @@
 
 int main()
 {
-    plog::init(plog::debug, "Hello.txt"); // Step2: initialize the logger.
+    plog::Init(plog::debug, "Hello.txt"); // Step2: initialize the logger.
 
     // Step3: write log messages using a special macro. There are several log macros, use the macro you liked the most.
 

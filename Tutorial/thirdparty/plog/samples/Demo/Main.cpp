@@ -18,7 +18,7 @@ void unmanagedFunc()
 
 int main()
 {
-    plog::init(plog::debug, "Demo.csv", 5000, 3); // Initialize the logger.
+    plog::Init(plog::debug, "Demo.csv", 5000, 3); // Initialize the logger.
 
     // Log macro types.
     PLOGD << "Hello log!"; // short macro

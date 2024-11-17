@@ -40,7 +40,7 @@ int main (int argc, char **argv) {
 
     CFRunLoopRef loop = CFRunLoopGetCurrent();
     if( !loop ) {
-        printf("Error: Cannot get current run loop\n");
+        printf("Error: Cannot get current WorkThreadRun loop\n");
         return 1;
     }
 

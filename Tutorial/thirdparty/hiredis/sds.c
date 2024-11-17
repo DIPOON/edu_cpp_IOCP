@@ -66,9 +66,9 @@ static inline char sdsReqType(size_t string_size) {
     return SDS_TYPE_64;
 }
 
-/* Create a new sds string with the content specified by the 'init' pointer
+/* Create a new sds string with the content specified by the 'Init' pointer
  * and 'initlen'.
- * If NULL is used for 'init' the string is initialized with zero bytes.
+ * If NULL is used for 'Init' the string is initialized with zero bytes.
  *
  * The string is always null-termined (all the sds strings are, always) so
  * even if you create an sds string with:
@@ -78,7 +78,7 @@ static inline char sdsReqType(size_t string_size) {
  * You can print the string with printf() as there is an implicit \0 at the
  * end of the string. However the string is binary safe and can contain
  * \0 characters in the middle, as the length is stored in the sds header. */
-sds sdsnewlen(const void *init, size_t initlen) {
+sds sdsnewlen(const void *Init, size_t initlen) {
     void *sh;
     sds s;
     char type = sdsReqType(initlen);
@@ -90,7 +90,7 @@ sds sdsnewlen(const void *init, size_t initlen) {
 
     sh = s_malloc(hdrlen+initlen+1);
     if (sh == NULL) return NULL;
-    if (!init)
+    if (!Init)
         memset(sh, 0, hdrlen+initlen+1);
     s = (char*)sh+hdrlen;
     fp = ((unsigned char*)s)-1;
@@ -128,8 +128,8 @@ sds sdsnewlen(const void *init, size_t initlen) {
             break;
         }
     }
-    if (initlen && init)
-        memcpy(s, init, initlen);
+    if (initlen && Init)
+        memcpy(s, Init, initlen);
     s[initlen] = '\0';
     return s;
 }
@@ -141,9 +141,9 @@ sds sdsempty(void) {
 }
 
 /* Create a new sds string starting from a null terminated C string. */
-sds sdsnew(const char *init) {
-    size_t initlen = (init == NULL) ? 0 : strlen(init);
-    return sdsnewlen(init, initlen);
+sds sdsnew(const char *Init) {
+    size_t initlen = (Init == NULL) ? 0 : strlen(Init);
+    return sdsnewlen(Init, initlen);
 }
 
 /* Duplicate an sds string. */
@@ -1254,7 +1254,7 @@ int sdsTest(void) {
             x = sdsnew("0");
             test_cond("sdsnew() free/len buffers", sdslen(x) == 1 && sdsavail(x) == 0);
 
-            /* Run the test a few times in order to hit the first two
+            /* WorkThreadRun the test a few times in order to hit the first two
              * SDS header types. */
             for (i = 0; i < 10; i++) {
                 int oldlen = sdslen(x);

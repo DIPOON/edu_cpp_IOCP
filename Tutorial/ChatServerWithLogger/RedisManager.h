@@ -15,7 +15,7 @@ public:
 	RedisManager() = default;
 	~RedisManager() = default;
 
-	bool Run(std::string ip_, UINT16 port_, const UINT32 threadCount_)
+	bool WorkThreadRun(std::string ip_, UINT16 port_, const UINT32 threadCount_)
 	{
 		if (Connect(ip_, port_) == false)
 		{

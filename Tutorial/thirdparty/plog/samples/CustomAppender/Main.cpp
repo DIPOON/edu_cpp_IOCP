@@ -32,7 +32,7 @@ namespace plog
 int main()
 {
     static plog::MyAppender<plog::FuncMessageFormatter> myAppender; // Create our custom appender.
-    plog::init(plog::debug, &myAppender); // Initialize the logger with our appender.
+    plog::Init(plog::debug, &myAppender); // Initialize the logger with our appender.
 
     PLOGD << "A debug message!";
 

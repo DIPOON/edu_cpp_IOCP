@@ -15,7 +15,7 @@ class ExampleQt : public QObject {
         void finished();
 
     public slots:
-        void run();
+        void WorkThreadRun();
 
     private:
         void finish() { emit finished(); }

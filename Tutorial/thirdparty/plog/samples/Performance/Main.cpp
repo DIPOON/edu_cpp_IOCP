@@ -13,11 +13,11 @@ enum
 int main()
 {
     // Initialize the logger that will be measured.
-    plog::init(plog::debug, "Performance.txt");
+    plog::Init(plog::debug, "Performance.txt");
 
     // Initialize the logger for printing info messages.
     static plog::ConsoleAppender<plog::TxtFormatter> consoleAppender;
-    plog::init<Console>(plog::debug, &consoleAppender);
+    plog::Init<Console>(plog::debug, &consoleAppender);
 
     PLOGI_(Console) << "Test started";
 

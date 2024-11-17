@@ -42,7 +42,7 @@ public:
 		m_pPacketManager->ReceivePacketData(clientIndex_, size_, pData_);
 	}
 
-	void Run(const UINT32 maxClient)
+	void WorkThreadRun(const UINT32 maxClient)
 	{
 		auto sendPacketFunc = [&](UINT32 clientIndex_, UINT16 packetSize, char* pSendPacket)
 		{
@@ -52,7 +52,7 @@ public:
 		m_pPacketManager = std::make_unique<PacketManager>();
 		m_pPacketManager->SendPacketFunc = sendPacketFunc;
 		m_pPacketManager->Init(maxClient);		
-		m_pPacketManager->Run();
+		m_pPacketManager->WorkThreadRun();
 		
 		StartServer(maxClient);
 	}

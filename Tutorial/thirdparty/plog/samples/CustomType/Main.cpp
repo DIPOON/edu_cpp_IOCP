@@ -20,7 +20,7 @@ namespace plog
 
 int main()
 {
-    plog::init(plog::debug, "CustomType.txt"); // Initialize the logger.
+    plog::Init(plog::debug, "CustomType.txt"); // Initialize the logger.
 
     Point pt1 = { 0, 0 };
     Point pt2 = { 10, -5 };

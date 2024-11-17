@@ -92,7 +92,7 @@ public:
 	 *用于初始化链接的详细信息。在　connect() 之前使用。也可以直接调用
 	 *bool connect( const std::string &host ,const uint16_t port, const std::string& password , const uint32_t timeout );来初始化。
 	 */
-	void init( const std::string &host = "127.0.0.1" , const uint16_t port = 6379 ,
+	void Init( const std::string &host = "127.0.0.1" , const uint16_t port = 6379 ,
 	                const std::string& password = "" , const uint32_t timeout = 0 )
 	{
 		_host = host;
@@ -105,7 +105,7 @@ public:
 	/**
 	 *@brief 链接　redis 数据库
 	 *
-	 * init() 之后调用此方法来链接数据库
+	 * Init() 之后调用此方法来链接数据库
 	 *
 	 *@return 成功返回　true,失败返回　false
 	 */
@@ -211,7 +211,7 @@ public:
 	                "" , const uint32_t timeout = 0 )
 	{
 		// Init attribute.
-		init(host, port, password, timeout);
+		Init(host, port, password, timeout);
 
 		return (connect());
 	}

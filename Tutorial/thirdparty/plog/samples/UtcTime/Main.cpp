@@ -10,7 +10,7 @@ int main()
 {
     static plog::ColorConsoleAppender<plog::TxtFormatterUtcTime> consoleAppender; // TxtFormatter in UTC
     static plog::RollingFileAppender<plog::CsvFormatterUtcTime> fileAppender("UtcTime.csv", 10000, 2); // CsvFormatter in UTC
-    plog::init(plog::verbose, &consoleAppender).addAppender(&fileAppender);
+    plog::Init(plog::verbose, &consoleAppender).addAppender(&fileAppender);
 
     PLOG_VERBOSE << "This is a VERBOSE message";
     PLOG_DEBUG << "This is a DEBUG message";

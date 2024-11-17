@@ -8,7 +8,7 @@
 int main()
 {
     static plog::DebugOutputAppender<plog::TxtFormatter> debugOutputAppender;
-    plog::init(plog::verbose, &debugOutputAppender);
+    plog::Init(plog::verbose, &debugOutputAppender);
 
     PLOGD << "Hello log!"; // short macro
     PLOG_DEBUG << "Hello log!"; // long macro

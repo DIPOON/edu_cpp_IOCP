@@ -10,7 +10,7 @@ extern "C" void foo();
 
 int main()
 {
-    plog::init(plog::debug, "ChainedApp.txt"); // Initialize the main logger.
+    plog::Init(plog::debug, "ChainedApp.txt"); // Initialize the main logger.
 
     PLOGD << "Hello from app!"; // Write a log message.
 

@@ -24,7 +24,7 @@ void PacketManager::CreateCompent(const UINT32 maxClient_)
 	mUserManager->Init(maxClient_);	
 }
 
-bool PacketManager::Run()
+bool PacketManager::WorkThreadRun()
 {	
 	//이 부분을 패킷 처리 부분으로 이동 시킨다.
 	mIsRunProcessThread = true;

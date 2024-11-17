@@ -11,7 +11,7 @@ extern "C" void Java_com_github_sergius_myapp_Sample_foo(JNIEnv* env, jobject ob
 {
     // For simplicity the logger is initialized here. But the good place is JNI_OnLoad.
     static plog::AndroidAppender<plog::FuncMessageFormatter> appender("MyApp"); // Create an appender and set a log tag.
-    static plog::Logger<0>& logger = plog::init(plog::debug, &appender); // Initialize the logger with the appender.
+    static plog::Logger<0>& logger = plog::Init(plog::debug, &appender); // Initialize the logger with the appender.
 
     PLOGD << "Hello Android!";
 }

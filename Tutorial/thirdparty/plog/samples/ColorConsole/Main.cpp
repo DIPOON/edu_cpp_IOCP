@@ -8,7 +8,7 @@
 int main()
 {
     static plog::ColorConsoleAppender<plog::TxtFormatter> consoleAppender;
-    plog::init(plog::verbose, &consoleAppender);
+    plog::Init(plog::verbose, &consoleAppender);
 
     // Log severity levels are printed in different colors.
     PLOG_VERBOSE << "This is a VERBOSE message";

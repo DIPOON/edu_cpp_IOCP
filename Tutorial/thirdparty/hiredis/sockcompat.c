@@ -113,7 +113,7 @@ static int _initWinsock() {
 }
 
 int win32_getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res) {
-    /* Note: This function is likely to be called before other functions, so run init here. */
+    /* Note: This function is likely to be called before other functions, so WorkThreadRun Init here. */
     if (!_initWinsock()) {
         return EAI_FAIL;
     }
@@ -153,7 +153,7 @@ void win32_freeaddrinfo(struct addrinfo *res) {
 SOCKET win32_socket(int domain, int type, int protocol) {
     SOCKET s;
 
-    /* Note: This function is likely to be called before other functions, so run init here. */
+    /* Note: This function is likely to be called before other functions, so WorkThreadRun Init here. */
     if (!_initWinsock()) {
         return INVALID_SOCKET;
     }

@@ -15,7 +15,7 @@ int main()
 	//소켓과 서버 주소를 연결하고 등록 시킨다.
 	server.BindandListen(SERVER_PORT);
 
-	server.Run(MAX_CLIENT);
+	server.WorkThreadRun(MAX_CLIENT);
 
 	printf("아무 키나 누를 때까지 대기합니다\n");
 	while (true)

@@ -37,7 +37,7 @@ public:
 		mPacketDataQueue.push_back(packet);
 	}
 
-	void Run(const UINT32 maxClient)
+	void WorkThreadRun(const UINT32 maxClient)
 	{
 		mIsRunProcessThread = true;
 		mProcessThread = std::thread([this]() { ProcessPacket(); });

@@ -26,7 +26,7 @@ namespace plog
 
 int main()
 {
-    plog::init<plog::MyFormatter>(plog::debug, "CustomFormatter.txt"); // Initialize the logger and pass our formatter as a template parameter to init function.
+    plog::Init<plog::MyFormatter>(plog::debug, "CustomFormatter.txt"); // Initialize the logger and pass our formatter as a template parameter to Init function.
 
     PLOGD << "A debug message!";
 

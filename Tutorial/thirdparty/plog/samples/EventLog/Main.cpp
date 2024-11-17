@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
     //
 
     static plog::EventLogAppender<plog::MessageOnlyFormatter> eventLogAppender(kEventSourceName);
-    plog::init(plog::verbose, &eventLogAppender);
+    plog::Init(plog::verbose, &eventLogAppender);
 
     PLOG_VERBOSE << "This is a VERBOSE message";
     PLOG_DEBUG << "This is a DEBUG message";

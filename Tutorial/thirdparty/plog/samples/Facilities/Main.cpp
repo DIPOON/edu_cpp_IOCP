@@ -14,12 +14,12 @@ enum Facility // Define log facilities.
 
 int main()
 {
-    plog::init<Sink>(plog::debug, "Facility.csv"); // Initialize the sink logger.
+    plog::Init<Sink>(plog::debug, "Facility.csv"); // Initialize the sink logger.
 
     // Initialize all other loggers and set the sink logger as an appender. Each of the loggers can have their own severity level.
-    plog::init<Default>(plog::debug, plog::get<Sink>());
-    plog::init<Auth>(plog::warning, plog::get<Sink>());
-    plog::init<FileIO>(plog::info, plog::get<Sink>());
+    plog::Init<Default>(plog::debug, plog::get<Sink>());
+    plog::Init<Auth>(plog::warning, plog::get<Sink>());
+    plog::Init<FileIO>(plog::info, plog::get<Sink>());
 
     PLOGD_(Default) << "This is a message from the Default facility";
     PLOGD << "This is a message from the Default facility too because Default = 0";

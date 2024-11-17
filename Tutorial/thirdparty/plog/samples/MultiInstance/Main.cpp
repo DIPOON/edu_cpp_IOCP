@@ -11,8 +11,8 @@ enum // Define log instances. Default is 0 and is omitted from this enum.
 
 int main()
 {
-    plog::init(plog::debug, "MultiInstance-default.txt"); // Initialize the default logger instance.
-    plog::init<SecondLog>(plog::debug, "MultiInstance-second.txt"); // Initialize the 2nd logger instance.
+    plog::Init(plog::debug, "MultiInstance-default.txt"); // Initialize the default logger instance.
+    plog::Init<SecondLog>(plog::debug, "MultiInstance-second.txt"); // Initialize the 2nd logger instance.
 
     // Write some messages to the default log.
     PLOGD << "Hello default log!";

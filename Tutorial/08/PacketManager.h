@@ -20,7 +20,7 @@ public:
 
 	void Init(const UINT32 maxClient_);
 
-	bool Run();
+	bool WorkThreadRun();
 
 	void End();
 

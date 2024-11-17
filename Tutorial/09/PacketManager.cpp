@@ -28,9 +28,9 @@ void PacketManager::CreateCompent(const UINT32 maxClient_)
 	mUserManager->Init(maxClient_);
 }
 
-bool PacketManager::Run()
+bool PacketManager::WorkThreadRun()
 {	
-	if (mRedisMgr->Run("127.0.0.1", 6379, 1) == false)
+	if (mRedisMgr->WorkThreadRun("127.0.0.1", 6379, 1) == false)
 	{
 		return false;
 	}

@@ -272,7 +272,7 @@ static void __redisAsyncFree(redisAsyncContext *ac) {
     while (__redisShiftCallback(&ac->sub.invalid,&cb) == REDIS_OK)
         __redisRunCallback(ac,&cb,NULL);
 
-    /* Run subscription callbacks callbacks with NULL reply */
+    /* WorkThreadRun subscription callbacks callbacks with NULL reply */
     it = dictGetIterator(ac->sub.channels);
     while ((de = dictNext(it)) != NULL)
         __redisRunCallback(ac,dictGetEntryVal(de),NULL);

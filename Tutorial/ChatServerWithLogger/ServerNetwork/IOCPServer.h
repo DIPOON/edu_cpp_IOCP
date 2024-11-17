@@ -58,7 +58,7 @@ public:
 		// 파일로 로그를 남기는 경우
 		//static plog::ColorConsoleAppender<plog::TxtFormatter> consoleAppender;
 		//static plog::RollingFileAppender<plog::CsvFormatter> fileAppender("MultiAppender.csv", 8000, 3); // Create the 1st appender.
-		//plog::init(plog::debug, &consoleAppender).addAppender(&fileAppender);
+		//plog::Init(plog::debug, &consoleAppender).addAppender(&fileAppender);
 
 		// 이벤트 등록 때문에 이 프로그램은 관리자 권한의 실행이 필요하다
 		//Windows Event Log
@@ -71,7 +71,7 @@ public:
 		}
 
 		static plog::EventLogAppender<plog::MessageOnlyFormatter> eventLogAppender(L"eduChatServer");
-		plog::init(plog::debug, &eventLogAppender);				
+		plog::Init(plog::debug, &eventLogAppender);				
 		return true;
 	}
 		

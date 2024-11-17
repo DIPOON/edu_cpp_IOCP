@@ -24,45 +24,45 @@ namespace plog
     // Empty initializer / one appender
 
     template<int instanceId>
-    inline Logger<instanceId>& init(Severity maxSeverity = none, IAppender* appender = NULL)
+    inline Logger<instanceId>& Init(Severity maxSeverity = none, IAppender* appender = NULL)
     {
         static Logger<instanceId> logger(maxSeverity);
         return appender ? logger.addAppender(appender) : logger;
     }
 
-    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& init(Severity maxSeverity = none, IAppender* appender = NULL)
+    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& Init(Severity maxSeverity = none, IAppender* appender = NULL)
     {
-        return init<PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, appender);
+        return Init<PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, appender);
     }
 
     //////////////////////////////////////////////////////////////////////////
     // RollingFileAppender with any Formatter
 
     template<class Formatter, int instanceId>
-    inline Logger<instanceId>& init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<instanceId>& Init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
         static RollingFileAppender<Formatter> rollingFileAppender(fileName, maxFileSize, maxFiles);
-        return init<instanceId>(maxSeverity, &rollingFileAppender);
+        return Init<instanceId>(maxSeverity, &rollingFileAppender);
     }
 
     template<class Formatter>
-    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& Init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
-        return init<Formatter, PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
+        return Init<Formatter, PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
     }
 
     //////////////////////////////////////////////////////////////////////////
     // RollingFileAppender with TXT/CSV chosen by file extension
 
     template<int instanceId>
-    inline Logger<instanceId>& init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<instanceId>& Init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
-        return isCsv(fileName) ? init<CsvFormatter, instanceId>(maxSeverity, fileName, maxFileSize, maxFiles) : init<TxtFormatter, instanceId>(maxSeverity, fileName, maxFileSize, maxFiles);
+        return isCsv(fileName) ? Init<CsvFormatter, instanceId>(maxSeverity, fileName, maxFileSize, maxFiles) : Init<TxtFormatter, instanceId>(maxSeverity, fileName, maxFileSize, maxFiles);
     }
 
-    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& Init(Severity maxSeverity, const util::nchar* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
-        return init<PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
+        return Init<PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
     }
 
     //////////////////////////////////////////////////////////////////////////
@@ -70,26 +70,26 @@ namespace plog
 
 #ifdef _WIN32
     template<class Formatter, int instanceId>
-    inline Logger<instanceId>& init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<instanceId>& Init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
-        return init<Formatter, instanceId>(maxSeverity, util::toWide(fileName).c_str(), maxFileSize, maxFiles);
+        return Init<Formatter, instanceId>(maxSeverity, util::toWide(fileName).c_str(), maxFileSize, maxFiles);
     }
 
     template<class Formatter>
-    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& Init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
-        return init<Formatter, PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
+        return Init<Formatter, PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
     }
 
     template<int instanceId>
-    inline Logger<instanceId>& init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<instanceId>& Init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
-        return init<instanceId>(maxSeverity, util::toWide(fileName).c_str(), maxFileSize, maxFiles);
+        return Init<instanceId>(maxSeverity, util::toWide(fileName).c_str(), maxFileSize, maxFiles);
     }
 
-    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
+    inline Logger<PLOG_DEFAULT_INSTANCE_ID>& Init(Severity maxSeverity, const char* fileName, size_t maxFileSize = 0, int maxFiles = 0)
     {
-        return init<PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
+        return Init<PLOG_DEFAULT_INSTANCE_ID>(maxSeverity, fileName, maxFileSize, maxFiles);
     }
 #endif
 }
